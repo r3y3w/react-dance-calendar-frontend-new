@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
+
 export const CardAdmin = ({ venue }) => {
 
     const deleteEvent = () => {
-        fetch(`${process.env.REACT_APP_API_ENDPOINT}/delete?=${venue.dancevenue}`, {
+        fetch(`${process.env.REACT_APP_API_ENDPOINT}/delete?_id=${venue._id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -41,9 +41,8 @@ export const CardAdmin = ({ venue }) => {
             <p><b>Weekly:</b>  {venue.weekly}</p>
             <p><b>category:</b>  {venue.category}</p>
             <br />
-            </div>
-            <div>
-                <button className="card-button" onClick={() => editEvent(venue._id)}>
+            </div>          
+                <button className="card-button" onClick={() => editEvent(venue.dancevenue)}>
                     <a>
                         Edit Event
                     </a>
@@ -52,8 +51,7 @@ export const CardAdmin = ({ venue }) => {
                     <a>
                         Delete Event
                     </a>
-                </button>
-            </div>
+                </button>           
         </div>
         </>
     )
