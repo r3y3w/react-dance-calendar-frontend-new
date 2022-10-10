@@ -1,5 +1,6 @@
+
 import {useState, useEffect } from 'react'
-import { Card } from '../components/Card'
+import { CardLearn } from '../components/CardLearn'
 
 const Learn2Dance = () => {
 
@@ -13,13 +14,16 @@ const Learn2Dance = () => {
             .then((data) => setVenueCollection(data))
             .catch((err) => console.error(err))
         console.log('Getting Data')
-        console.log(venuecollection)
+        // console.log(venuecollection)
     }, [])
 
-    const allVenues = venuecollection.map((venue, index) => {
-        return <Card key={venue._id} venue={venue} index={index} />
-    })
-
+     //Filter event venues, and hide them by default
+    const allVenues =
+        venuecollection.filter((venue) => { 
+            if (venue.category!=='event')               
+           return(venue)}).map((venue, index) => {
+               return (< CardLearn key={venue._id} venue={venue} index={index} className="venue-item"/>
+                )})
     return(
         <div>
         <h1>Learn to Dance</h1>

@@ -2,7 +2,6 @@ import {useState, useEffect } from 'react'
 import { Card } from '../components/Card'
 
 const Home = () => {
-
     const [venuecollection, setVenueCollection] = useState([])
 
     // Render Mongo DB collection
@@ -13,12 +12,16 @@ const Home = () => {
             .then((data) => setVenueCollection(data))
             .catch((err) => console.error(err))
         console.log('Getting Data')
-        console.log(venuecollection)
+        // console.log(venuecollection)
     }, [])
 
-    const allVenues = venuecollection.map((venue, index) => {
-        return < Card key={venue._id} venue={venue} index={index} className="venue-item"/>
-    })
+    //Filter event venues, and show them by default
+    const allVenues =
+        venuecollection.filter((venue) => { 
+            if (venue.category==='event')               
+           return(venue)}).map((venue, index) => {
+               return (< Card key={venue._id} venue={venue} index={index} className="venue-item"/>
+                )})       
 
     return(
         <div>
