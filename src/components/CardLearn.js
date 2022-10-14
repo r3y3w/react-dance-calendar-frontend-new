@@ -1,6 +1,9 @@
-// import { Link } from 'react-router-dom'
 import { Collapse } from 'react-collapse'
 import { useState } from 'react'
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image'
 
 export const CardLearn = ({ venue }) => {
 
@@ -8,38 +11,35 @@ export const CardLearn = ({ venue }) => {
 
     return(
 
-        <div state={venue} to="/" className="venue-item" >
-                       
-            <img src={venue.image} alt=""/>
-            <div>
-            <h1><b>Learn to Dance:</b> {venue.dancevenue}</h1> 
-            <p><b>Dance:</b>  {venue.dance}</p>             
-            <p><b>Address:</b>  {venue.address}</p>
-            <p><b>telephone:</b>  {venue.telephone}</p>
-          
+        <div state={venue} to="/" className="venue-item" >                       
+        <Card style={{ rem:'18' }}>
+        <Card.Img variant="top" style={{ width: '90px', height: '90px' }} src={venue.image} />
+        
+            <ListGroup className="list-group-flush">
+            <ListGroup.Item><h5><b>{venue.dancevenue}</b></h5></ListGroup.Item>
+                    <ListGroup.Item><b>Dance: {venue.dance}</b></ListGroup.Item>
+                    <ListGroup.Item><b> Address: {venue.address}</b></ListGroup.Item>            
+                    <ListGroup.Item><b>Telephone: {venue.telephone}</b></ListGroup.Item>
+                    <ListGroup.Item><b>Cover Fee: {venue.coverfee}</b></ListGroup.Item>
+                <Collapse isOpened={changeView}>
+                    <ListGroup.Item><b>Date: {venue.date}</b></ListGroup.Item>
+                    <ListGroup.Item><b>Email: {venue.email}</b></ListGroup.Item>
+                    <ListGroup.Item><b>WorkShop: {venue.workshop}</b></ListGroup.Item>
+                    <ListGroup.Item><b>Weekly event: {venue.weekly}</b></ListGroup.Item>
+                    <ListGroup.Item><b>Category: {venue.category}</b></ListGroup.Item>
+                </Collapse>
+            </ListGroup>
+            <Button variant="link"  style={{ fontSize: 9 }} onClick={() => setChangeView(!changeView)} >
+                <a>
+                    Event Details
+                </a>
+            </Button>
+        </Card>            
            
-            <br />  
-            </div>
-
-            <Collapse isOpened={changeView}>
-            <div>
-            <p><b>CoverFee: </b> {venue.coverfee}</p>
-            <p><b>Date:</b>  {venue.date}</p>
-            <p><b>email:</b>  {venue.email}</p>
-            <p><b>Workshop:</b>  {venue.workshop}</p>
-            <p><b>Weekly:</b>  {venue.weekly}</p>
-            <p><b>category:</b>  {venue.category}</p>
-            <br />
-            </div>
-            </Collapse>
-            <div>
-                <button onClick={() => setChangeView(!changeView)}  className="card-button">
-                    <a>
-                        Change View
-                    </a>
-                </button>
-            </div>
-        </div>
+       
+       
+    </div>
+    
         
     )
 

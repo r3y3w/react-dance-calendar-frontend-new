@@ -1,63 +1,80 @@
+import { Collapse } from "react-collapse";
+import { useState } from "react";
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
+
 
 export const CardAdmin = ({ venue }) => {
+//   const [form, setForm] = useState({});
+  const [changeView, setChangeView] = useState(false);
 
-    const deleteEvent = () => {
-        fetch(`${process.env.REACT_APP_API_ENDPOINT}/delete?_id=${venue._id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                },
-            })
-            .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(err => console.error(err))
-            console.log('Event Deleted')
-        }
+  const deleteEvent = () => {
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/delete?_id=${venue._id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err));
+    console.log("Event Deleted");
+     alert("Event Deleted");
+  };
 
-        const editEvent = (_id) => {
-            alert(venue._id)
-            }
-// I sawapped the <Link> tags for <div>
-    return(
-        <>
-         
-        <div to="/admin-page" className="venue-item-admin" >
-                       
-            <img src={venue.image} alt=""/>
-            <div>
-            <h1><b>Event:</b> {venue.dancevenue}</h1>
-            <br />
-            <p><b>Event ID:</b>  {venue._id}</p>       
-            <p><b>Address:</b>  {venue.address}</p>
-            <p><b>telephone:</b>  {venue.telephone}</p>
-            <p><b>email:</b>  {venue.email}</p>
-            <br />  
-            </div>
-            <div>
-            <p><b>CoverFee: </b> {venue.coverfee}</p>
-            <p><b>Date:</b>  {venue.date}</p>
-            <p><b>Dance:</b>  {venue.dance}</p>
-            <p><b>Workshop:</b>  {venue.workshop}</p>
-            <p><b>Weekly:</b>  {venue.weekly}</p>
-            <p><b>category:</b>  {venue.category}</p>
-            <br />
-            </div>          
-                <button className="card-button" onClick={() => editEvent(venue.dancevenue)}>
-                    <a>
-                        Edit Event
-                    </a>
-                </button>
-                <button className="card-button" onClick={() => deleteEvent(venue.dancevenue)}>
-                    <a>
-                        Delete Event
-                    </a>
-                </button>           
-        </div>
-        </>
-    )
+  const editEvent = (e) => {
+    // alert(venue._id);
+    e.preventDefault();
+    const updateVenue = { CoverFee: '$25.00'  }
 
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/update?_id=${venue._id}`, {
+      // <-------- reference  root
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updateVenue), // <--------   Info to be added /
+    })
+      .then((res) => res.json())
+      //   .then(data => navigate('/'))
+    //   .then(() => setForm(form)) // <------------  Info to be added
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+    console.log("Dance Event Updated");
+  };
 
-    
+  // I sawapped the <Link> tags for <div>
 
-}
-
+  return (
+    <>
+      <div to="/admin-page" className="venue-item-admin">               
+            <Card style={{ rem:'18' }}>
+            <Card.Img variant="top" style={{ width: '90px', height: '90px' }} src={venue.image} />            
+                <ListGroup className="list-group-flush">
+                <ListGroup.Item>Id: <b>{venue._id}</b></ListGroup.Item>    
+                <ListGroup.Item><h6><b>{venue.dancevenue}</b></h6></ListGroup.Item>
+                        <ListGroup.Item><b>Dance: {venue.dance}</b></ListGroup.Item>
+                        <ListGroup.Item><b> Address: {venue.address}</b></ListGroup.Item>            
+                        <ListGroup.Item><b>Telephone: {venue.telephone}</b></ListGroup.Item>
+                        <ListGroup.Item><b>Cover Fee: {venue.coverfee}</b></ListGroup.Item>
+              <Collapse isOpened={changeView}>
+                        <ListGroup.Item><b>Date: {venue.date}</b></ListGroup.Item>
+                        <ListGroup.Item><b>Email: {venue.email}</b></ListGroup.Item>
+                        <ListGroup.Item><b>WorkShop: {venue.workshop}</b></ListGroup.Item>
+                        <ListGroup.Item><b>Weekly event: {venue.weekly}</b></ListGroup.Item>
+                        <ListGroup.Item><b>Category: {venue.category}</b></ListGroup.Item>
+                </Collapse>
+                </ListGroup>
+                <Button variant="link"  style={{ fontSize: 9 }} onClick={() => setChangeView(!changeView)} >
+                    <a>Event Details</a>
+                </Button>
+                <Button variant="link"  style={{ fontSize: 9 }} onClick={() => deleteEvent(venue.dancevenue)}>
+              <a>Delete Event</a>
+            </Button>
+            <Button variant="link"  style={{ fontSize: 9 }} onClick={() => editEvent(venue.dancevenue)} >
+              <a>Edit Event</a>
+            </Button>  
+        </Card>
+       </div> 
+    </>
+  );
+};

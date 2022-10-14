@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-// import { useLocation, useNavigate} from 'react-router-dom'
+import { useLocation, useNavigate} from 'react-router-dom'
 import { CardAdmin } from "../components/CardAdmin";
 
 const AdminPage = () => {
   const [form, setForm] = useState({});
   const [venuecollection, setVenueCollection] = useState([]);
-//   const location = useLocation()
-//   const navigate = useNavigate()
-//   const { dancevenue, address, coverfee, date, weekly, workshop, dance, image, telephone, ,email, category } = location.state
+  // const location = useLocation()
+  const navigate = useNavigate()
+  // const { dancevenue, address, coverfee, date, weekly, workshop, dance, image, telephone, email, category, index } = location.state
 
 
   // Render Mongo DB collection  using GET Method in the Backend
@@ -52,6 +52,7 @@ const testAddEvent = () => {
       .then((data) => console.log(data))
       .catch((err) => console.error(err));
     console.log("Test Data Added");
+    alert("Test Data Added");
   };
 
 
@@ -70,34 +71,34 @@ const testAddEvent = () => {
         .then((data) => console.log(data))
         .catch((err) => console.error(err));
       console.log("Event Added");
+      alert("Event Added");
   };
 
 
 // Update
-// /   // const updateBlogtWith = { blogForm }; // <------------  Info to be added
-
-//   fetch(`${process.env.REACT_APP_API_ENDPOINT}/update?`, {
-//   // <-------- reference  root
-
-//   method: "PUT",
-//   headers: { "Content-Type": "application/json" },
-//   body: JSON.stringify(form), // <--------   Info to be added /
-// })
-//   .then((res) => res.json())
-//   .then((data) => setForm(data))
-//   // .then(() => setForm(form)) // <------------  Info to be added
-//   .catch((err) => console.log(err));
-// console.log("Blog Updated");
-// };
-
- 
+  const editVenue = e => {
+    e.preventDefault()
+  fetch(`${process.env.REACT_APP_API_ENDPOINT}/update/?dancevenue=${allVenues.dancevenue}`, {
+   
+  // <-------- reference  root
+  method: "PUT",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(form), // <--------   Info to be added /
+})
+  .then(res => res.json())
+  .then(data => navigate('/'))
+  // .then(() => setForm(form)) // <------------  Info to be added
+  .catch((err) => console.log(err));
+console.log("Dance Event Updated");
+};
 
   return (
     <div>
-      <h1>Where to Dance?</h1>
-      <h2>Where to Dance Site Administrator Form :</h2>
-      <div className="form-container">
-        <h2>Add Event </h2>
+      
+      <h5><i>Where to Dance Site Administrator Form </i></h5>
+      <div className="form-container" >
+        
+        <h6>Add Event: </h6>
         <form className="add-form">
           <label>
             <b>
@@ -228,7 +229,8 @@ const testAddEvent = () => {
               setForm({ ...form, telephone: e.target.value });
             }}
           />
-          <br />        
+          <br />
+        
           <label>
             <b>
               <i>Add : Email : = </i>
@@ -260,7 +262,8 @@ const testAddEvent = () => {
             >
                 Add Event
           </button>
-          {/* <button onClick={(e) => handleUpdate(e)}>Update Event</button> */}
+          <br />
+          <button onClick={() => editVenue()}>Update Event</button>
         </form>
 
           <button 
@@ -269,8 +272,12 @@ const testAddEvent = () => {
                 Test Event
           </button>
       </div>
+      
       <div className="venues">{allVenues}</div>
+
+  
     </div>
+    
   );
 };
 
