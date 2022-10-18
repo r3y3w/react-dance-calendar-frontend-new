@@ -38,31 +38,31 @@ const Home = () => {
                 
     const allVenuesSalsa =
      venuecollection.filter((venue) => { 
-            if (venue.dance === 'Salsa')               
+            if (venue.dance === 'Salsa' && venue.category ==='event')               
              return(venue)}).map((venue, index) => {
                 return (< CardVenue key={venue._id} venue={venue} index={index} className="venue-item"/>
                     )}) 
        const allVenuesBachata =
      venuecollection.filter((venue) => { 
-            if (venue.dance === 'Bachata')               
+            if (venue.dance === 'Bachata' && venue.category ==='event')               
              return(venue)}).map((venue, index) => {
                 return (< CardVenue key={venue._id} venue={venue} index={index} className="venue-item"/>
                     )})
        const allVenuesKizomba =
      venuecollection.filter((venue) => { 
-            if (venue.dance === 'Kizomba')               
+            if (venue.dance === 'Kizomba' && venue.category ==='event')               
              return(venue)}).map((venue, index) => {
                 return (< CardVenue key={venue._id} venue={venue} index={index} className="venue-item"/>
                     )}) 
          const allVenuesBallroom =
      venuecollection.filter((venue) => { 
-            if (venue.dance === 'Ballroom')               
+            if (venue.dance === 'Ballroom' && venue.category ==='event')               
              return(venue)}).map((venue, index) => {
                 return (< CardVenue key={venue._id} venue={venue} index={index} className="venue-item"/>
                     )}) 
         const allVenuesFestivals =
     venuecollection.filter((venue) => { 
-            if (venue.dance === 'Festival')               
+            if (venue.dance === 'Festival' && venue.category ==='event')               
               return(venue)}).map((venue, index) => {
                     return (< CardVenue key={venue._id} venue={venue} index={index} className="venue-item"/>
                     )}) 
@@ -102,40 +102,46 @@ const Home = () => {
 
             <Container>
                 <Row>
-                    <Col className='column' xs={3}>
+                    <Col className='column' xs={10}>
                     <br />
                     <br />
                     <br />
                         <Calendar onChange={onChange} value={date} />
                         {console.log(date)}
                         {date.toString()} 
-                            <Accordion>
+                            <Accordion>                            
                                 <Accordion.Item eventKey="0">
+                                <Accordion.Header>All Dance Events</Accordion.Header>
+                                    <Accordion.Body>
+                                         <div className='venues'>{allVenues}</div>
+                                    </Accordion.Body>
+                                </Accordion.Item>                                
+                                <Accordion.Item eventKey="1">
                                     <Accordion.Header>Salsa Events</Accordion.Header>
                                     <Accordion.Body>
                                         <div className='venues'>{allVenuesSalsa}</div>
                                     </Accordion.Body>
                                 </Accordion.Item>
-                                    <Accordion.Item eventKey="1">
+                                    <Accordion.Item eventKey="2">
                                          <Accordion.Header>Bachata Events</Accordion.Header>
                                              <Accordion.Body>
                                                  <div className='venues'>{allVenuesBachata}</div>
                                              </Accordion.Body>
                                     </Accordion.Item>
-                                <Accordion.Item eventKey="1">
+                                <Accordion.Item eventKey="3">
                                         <Accordion.Header>Kizomba Events</Accordion.Header>
                                              <Accordion.Body>
                                                 <div className='venues'>{allVenuesKizomba}</div>
                                              </Accordion.Body>
                                 </Accordion.Item>                               
-                                <Accordion.Item eventKey="0">
+                                <Accordion.Item eventKey="4">
                                     <Accordion.Header>Ballroom Events</Accordion.Header>
                                         <Accordion.Body>
                                             <div className='venues'>{allVenuesBallroom}</div>
                                         </Accordion.Body>
                                     </Accordion.Item>
                                                                 
-                                <Accordion.Item eventKey="0">
+                                <Accordion.Item eventKey="5">
                                     <Accordion.Header>Festivals</Accordion.Header>
                                         <Accordion.Body>
                                             <div className='venues'>{allVenuesFestivals}</div>
@@ -144,21 +150,20 @@ const Home = () => {
                             </Accordion>                 
                     </Col>
                           
-                    <Col className='column' xs={8} >
+                    {/* <Col className='column' xs={8} >
 
                     <br />
                     <br />
                     <br />  
-                    <Accordion defaultActiveKey="0">
-                            <Accordion.Item eventKey="0">
+                            <Accordion defaultActiveKey="0">
+                                <Accordion.Item eventKey="0">
                                 <Accordion.Header>All Dance Events</Accordion.Header>
-                                <Accordion.Body>
-                                    <div className='venues'>{allVenues}</div>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            </Accordion>
-         
-                    </Col>
+                                    <Accordion.Body>
+                                         <div className='venues'>{allVenues}</div>
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            </Accordion>         
+                    </Col> */}
                 </Row>
             </Container>
         </div>

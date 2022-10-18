@@ -48,7 +48,7 @@ export const CardAdmin = ({ venue }) => {
     <>
       <div to="/admin-page" className="venue-item-admin">               
             <Card style={{ rem:'18' }}>
-            <Card.Img variant="top" style={{ width: '90px', height: '90px' }} src={venue.image} />            
+            <Card.Img variant="top" style={{ width: '200px', height: '200px' }} src={venue.image} />            
                 <ListGroup className="list-group-flush">
                 <ListGroup.Item>Id: <b>{venue._id}</b></ListGroup.Item>    
                 <ListGroup.Item><h6><b>{venue.dancevenue}</b></h6></ListGroup.Item>

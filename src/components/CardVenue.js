@@ -13,7 +13,7 @@ export const CardVenue = ({ venue }) => {
 
         <div state={venue} to="/" className="venue-item" >                       
             <Card style={{ rem:'18' }}>
-            <Card.Img variant="top" style={{ width: '90px', height: '90px' }} src={venue.image} />
+            <Card.Img variant="top" style={{ width: '200px', height: '200px' }} src={venue.image} />
             
                 <ListGroup className="list-group-flush">
                 <ListGroup.Item><h5><b>{venue.dancevenue}</b></h5></ListGroup.Item>

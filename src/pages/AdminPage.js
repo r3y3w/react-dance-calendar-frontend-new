@@ -33,7 +33,7 @@ const AdminPage = () => {
     weekly: true,
     workshop: "Salsa",
     dance:"Bachata",
-    image: "https://d33wubrfki0l68.cloudfront.net/6e52a8769c1b6d4a4cc09d4c58f07c67061e54bf/399c6/images/tango.png",
+    image: "https://rafael-reyes-bucket.s3.amazonaws.com/DaniaBeachCasinoLatinThursday-02.jpg",
     telephone: "954-920-1511",
     email:  "https://www.casinodaniabeach.com/",
     category:"event"
