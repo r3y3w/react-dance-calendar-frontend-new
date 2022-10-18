@@ -5,6 +5,7 @@ import 'react-calendar/dist/Calendar.css';
 import Calendar from 'react-calendar'
 import Figure from 'react-bootstrap/Figure'
 import Image from 'react-bootstrap/Image'
+import Accordion from 'react-bootstrap/Accordion';
 
 const Learn2Dance = () => {
     const [venuecollection, setVenueCollection] = useState([])
@@ -25,9 +26,15 @@ const Learn2Dance = () => {
     }, [])
 
      //Filter event venues, and hide them by default
-    const allVenues =
+    const allVenuesStudios =
         venuecollection.filter((venue) => { 
-            if (venue.category!=='event')               
+            if (venue.category ==='school')               
+           return(venue)}).map((venue, index) => {
+               return (< CardLearn key={venue._id} venue={venue} index={index} className="venue-item"/>
+                )})
+     const allVenuesInstructors =
+        venuecollection.filter((venue) => { 
+            if (venue.category === 'Instructor')               
            return(venue)}).map((venue, index) => {
                return (< CardLearn key={venue._id} venue={venue} index={index} className="venue-item"/>
                 )})
@@ -64,18 +71,27 @@ const Learn2Dance = () => {
                 </Col>
             </Row>
             <Row>
-                
-                <Col className='column' xs={2}>
-                    <Calendar showWeekNumbers onChange={onChange} value={date} />
+            <Col className='column' xs={10}>
+                    <br />
+                    <br />
+                    <br />
+                <Calendar showWeekNumbers onChange={onChange} value={date} />                   
                     {console.log(date)}
-                    {date.toString()}                  
-                </Col>
-                           
-                <Col className='column' xs={9} >
-                    <div className='venues'>{allVenues}</div>
-                    <br />
-                    <br />
-                    <br />
+                    {date.toString()} 
+                <Accordion>                            
+                                <Accordion.Item eventKey="0">
+                                <Accordion.Header>Dance Studios</Accordion.Header>
+                                    <Accordion.Body>
+                                         <div className='venues'>{allVenuesStudios}</div>
+                                    </Accordion.Body>
+                                </Accordion.Item>                                
+                                <Accordion.Item eventKey="1">
+                                    <Accordion.Header>Dance Instructors</Accordion.Header>
+                                    <Accordion.Body>
+                                        <div className='venues'>{allVenuesInstructors}</div>
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                </Accordion>            
                 </Col>
             </Row>
         </Container>
