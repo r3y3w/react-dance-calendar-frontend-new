@@ -4,7 +4,8 @@ import { Container,Row, Col } from 'react-bootstrap'
 import 'react-calendar/dist/Calendar.css';
 import Calendar from 'react-calendar'
 import Figure from 'react-bootstrap/Figure'
-
+import Image from 'react-bootstrap/Image'
+import Accordion from 'react-bootstrap/Accordion';
 
 const Home = () => {
     const [venuecollection, setVenueCollection] = useState([])
@@ -26,74 +27,142 @@ const Home = () => {
     }, [])
 
     //Filter event venues, and show them by default
+
+    
     const allVenues =
         venuecollection.filter((venue) => { 
-            if (venue.category==='event')               
+            if (venue.category ==='event')               
            return(venue)}).map((venue, index) => {
                return (< CardVenue key={venue._id} venue={venue} index={index} className="venue-item"/>
-                )})       
-
+                )}) 
+                
+    const allVenuesSalsa =
+     venuecollection.filter((venue) => { 
+            if (venue.dance === 'Salsa')               
+             return(venue)}).map((venue, index) => {
+                return (< CardVenue key={venue._id} venue={venue} index={index} className="venue-item"/>
+                    )}) 
+       const allVenuesBachata =
+     venuecollection.filter((venue) => { 
+            if (venue.dance === 'Bachata')               
+             return(venue)}).map((venue, index) => {
+                return (< CardVenue key={venue._id} venue={venue} index={index} className="venue-item"/>
+                    )})
+       const allVenuesKizomba =
+     venuecollection.filter((venue) => { 
+            if (venue.dance === 'Kizomba')               
+             return(venue)}).map((venue, index) => {
+                return (< CardVenue key={venue._id} venue={venue} index={index} className="venue-item"/>
+                    )}) 
+         const allVenuesBallroom =
+     venuecollection.filter((venue) => { 
+            if (venue.dance === 'Ballroom')               
+             return(venue)}).map((venue, index) => {
+                return (< CardVenue key={venue._id} venue={venue} index={index} className="venue-item"/>
+                    )}) 
+        const allVenuesFestivals =
+    venuecollection.filter((venue) => { 
+            if (venue.dance === 'Festival')               
+              return(venue)}).map((venue, index) => {
+                    return (< CardVenue key={venue._id} venue={venue} index={index} className="venue-item"/>
+                    )}) 
+    
+                                   
     return(
 
         <div>
-            <Container fluid="md">
-                <Row className='row-top'>
-                    <Col className='column' >   
-                        <Figure>
-                                <Figure.Image
-                                    width={500}
-                                    height={500}
-                                    alt="171x180"
-                                    src="https://img.theculturetrip.com/450x/smart/wp-content/uploads/2017/02/shutterstock_575068651-lesinka372-e1488368659535.jpg"
-                                />
-                                <Figure.Caption>
-                                <h5>Fun</h5>
-                                </Figure.Caption>
-                        </Figure>
+            <br />
+            <Container >
+                <Row >
+                    <Col >   
+                      <Image 
+                        fluid                                    
+                        alt="171x180"
+                        src="https://rafael-reyes-bucket.s3.amazonaws.com/raf-final-image-1.jpg" />
+                        <h3 className="text-center"> Fun! </h3> 
                     </Col>
-                    <Col className='column' >
-                        <Figure>
-                                <Figure.Image
-                                    width={400}
-                                    height={400}
-                                    alt="171x180"
-                                    src="https://firstworks.org/wp-content/uploads/2022/05/Eddie-Palmieri-Main-Image-600x400-1.jpg"
-                                    
-                                />
-                                <Figure.Caption>
-                                <h5>Enjoy the Music!</h5>
-                                </Figure.Caption>
-                        </Figure>
+                    
+                    <Col >   
+                      <Image
+                        fluid                                       
+                        alt="171x180"
+                        src="https://rafael-reyes-bucket.s3.amazonaws.com/raf-final-image-3.jpg" />
+                        <h3 className="text-center"> Enjoy the Music</h3> 
                     </Col>
-                    <Col className='column' >
-                    <Figure>
-                                <Figure.Image
-                                    width={500}
-                                    height={500}
-                                    alt="171x180"
-                                    src="https://images.squarespace-cdn.com/content/v1/537e88a6e4b078fc56661bfc/1527655761428-YVH757WEJNYJ9DANPWSV/ShowImage.jpeg"
-                                    
-                                />
-                                <Figure.Caption>
-                                <h5>Live a  Healthier Life</h5>
-                                </Figure.Caption>
-                        </Figure>
+
+                    <Col >   
+                      <Image 
+                        fluid                                      
+                        alt="171x180"
+                        src="https://rafael-reyes-bucket.s3.amazonaws.com/raf-final-image-2.jpg" />
+                        <h3 className="text-center"> Live a  Healthier Life </h3> 
                     </Col>
                 </Row>
+            </Container>
+
+            <Container>
                 <Row>
-                    
-                    <Col className='column' xs={2}>
-                        <Calendar showWeekNumbers onChange={onChange} value={date} />
+                    <Col className='column' xs={3}>
+                    <br />
+                    <br />
+                    <br />
+                        <Calendar onChange={onChange} value={date} />
                         {console.log(date)}
-                        {date.toString()}                  
+                        {date.toString()} 
+                            <Accordion>
+                                <Accordion.Item eventKey="0">
+                                    <Accordion.Header>Salsa Events</Accordion.Header>
+                                    <Accordion.Body>
+                                        <div className='venues'>{allVenuesSalsa}</div>
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                                    <Accordion.Item eventKey="1">
+                                         <Accordion.Header>Bachata Events</Accordion.Header>
+                                             <Accordion.Body>
+                                                 <div className='venues'>{allVenuesBachata}</div>
+                                             </Accordion.Body>
+                                    </Accordion.Item>
+                                <Accordion.Item eventKey="1">
+                                        <Accordion.Header>Kizomba Events</Accordion.Header>
+                                             <Accordion.Body>
+                                                <div className='venues'>{allVenuesKizomba}</div>
+                                             </Accordion.Body>
+                                </Accordion.Item>                               
+                                <Accordion.Item eventKey="0">
+                                    <Accordion.Header>Ballroom Events</Accordion.Header>
+                                        <Accordion.Body>
+                                            <div className='venues'>{allVenuesBallroom}</div>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                                                
+                                <Accordion.Item eventKey="0">
+                                    <Accordion.Header>Festivals</Accordion.Header>
+                                        <Accordion.Body>
+                                            <div className='venues'>{allVenuesFestivals}</div>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                            </Accordion>                 
                     </Col>
-                               
-                    <Col className='column' xs={9} >
-                        <div className='venues'>{allVenues}</div>
+                          
+                    <Col className='column' xs={8} >
+
+                    <br />
+                    <br />
+                    <br />  
+                    <Accordion defaultActiveKey="0">
+                            <Accordion.Item eventKey="0">
+                                <Accordion.Header>All Dance Events</Accordion.Header>
+                                <Accordion.Body>
+                                    <div className='venues'>{allVenues}</div>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                            </Accordion>
+         
                     </Col>
                 </Row>
             </Container>
         </div>
+
     )
 }
 

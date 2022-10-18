@@ -1,10 +1,10 @@
 import {useState, useEffect } from 'react'
 import { CardLearn } from '../components/CardLearn'
 import { Container,Row, Col } from 'react-bootstrap'
-import Figure from 'react-bootstrap/Figure'
 import 'react-calendar/dist/Calendar.css';
 import Calendar from 'react-calendar'
-
+import Figure from 'react-bootstrap/Figure'
+import Image from 'react-bootstrap/Image'
 
 const Learn2Dance = () => {
     const [venuecollection, setVenueCollection] = useState([])
@@ -33,48 +33,34 @@ const Learn2Dance = () => {
                 )})
     return(
         <div>
+            <br/>
         <Container fluid="md">
             <Row className='row-top'>
                 <Col className='column' >   
-                    <Figure>
-                            <Figure.Image
-                                width={500}
-                                height={500}
+                  
+                            <Image
+                                fluid
                                 alt="171x180"
-                                src="https://joelsalsa.com/wp-content/uploads/2019/02/salsa_ladies_styling_homepage-07.png"
-                            />
-                            <Figure.Caption>
-                            <h5>Fun</h5>
-                            </Figure.Caption>
-                    </Figure>
+                                src="https://www.harmonyacademy.net/wp-content/uploads/2021/03/Salsa-lady-styling.jpeg"/>                          
+                            <h3 className="text-center">Fun</h3>
+                           
+               
                 </Col>
                 <Col className='column' >
-                    <Figure>
-                            <Figure.Image
-                                width={500}
-                                height={500}
+                             <Image
+                                fluid
                                 alt="171x180"
-                                src="https://www.saugatuck.com/media/bxhjvuux/social-ballroom-dancing-for-fun.jpg"
-                                
-                            />
-                            <Figure.Caption>
-                               <h5>Enjoy the Music</h5>
-                            </Figure.Caption>
-                    </Figure>
+                                src="https://www.saugatuck.com/media/bxhjvuux/social-ballroom-dancing-for-fun.jpg"/>
+                            <h3 className="text-center">Enjoy the Music</h3>
+                
+                   
                 </Col>
                 <Col className='column' >
-                <Figure>
-                            <Figure.Image
-                                width={500}
-                                height={500}
+                            <Image
+                                fluid
                                 alt="171x180"
-                                src="http://mmsalsainthepark.weebly.com/uploads/4/5/6/5/45650065/4024172_orig.jpg"
-                                
-                            />
-                            <Figure.Caption>
-                            <h5>Live a  Healthier Life</h5>
-                            </Figure.Caption>
-                    </Figure>
+                                src="http://mmsalsainthepark.weebly.com/uploads/4/5/6/5/45650065/4024172_orig.jpg"/>
+                            <h3 className="text-center">Live a  Healthier Life</h3>    
                 </Col>
             </Row>
             <Row>
@@ -87,6 +73,9 @@ const Learn2Dance = () => {
                            
                 <Col className='column' xs={9} >
                     <div className='venues'>{allVenues}</div>
+                    <br />
+                    <br />
+                    <br />
                 </Col>
             </Row>
         </Container>
