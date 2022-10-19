@@ -9,26 +9,30 @@ import Accordion from 'react-bootstrap/Accordion';
 
 const Home = () => {
     const [venuecollection, setVenueCollection] = useState([])
-    const [date, setDate] = useState(new Date())
+    const [myDate, setMyDate] = useState(new Date())
 
-    const onChange = date => {	
-        setDate(date)
+    const onChange = myDate => {	
+        setMyDate(myDate)
     }
     
     // Render Mongo DB collection
-    useEffect(() => {
-        
+    useEffect(() => {        
         fetch(`${process.env.REACT_APP_API_ENDPOINT}`)
             .then((res) => res.json())
             .then((data) => setVenueCollection(data))
             .catch((err) => console.error(err))
         console.log('Getting Data')
         // console.log(venuecollection)
-    }, [])
+    }, []) 
 
     //Filter event venues, and show them by default
 
-    
+    const allVenuesDate =
+    venuecollection.filter((venue) => { 
+        if (venue.date === '2022-10-21T16:00:00.000Z')   
+       return(venue)}).map((venue, index) => {
+           return (< CardVenue key={venue._id} venue={venue} index={index} className="venue-item"/>
+            )}) 
     const allVenues =
         venuecollection.filter((venue) => { 
             if (venue.category ==='event')               
@@ -80,8 +84,7 @@ const Home = () => {
                         alt="171x180"
                         src="https://rafael-reyes-bucket.s3.amazonaws.com/raf-final-image-1.jpg" />
                         <h3 className="text-center"> Fun! </h3> 
-                    </Col>
-                    
+                    </Col>                    
                     <Col >   
                       <Image
                         fluid                                       
@@ -89,7 +92,6 @@ const Home = () => {
                         src="https://rafael-reyes-bucket.s3.amazonaws.com/raf-final-image-3.jpg" />
                         <h3 className="text-center"> Enjoy the Music</h3> 
                     </Col>
-
                     <Col >   
                       <Image 
                         fluid                                      
@@ -99,17 +101,23 @@ const Home = () => {
                     </Col>
                 </Row>
             </Container>
-
             <Container>
                 <Row>
                     <Col className='column' xs={10}>
                     <br />
                     <br />
                     <br />
-                        <Calendar onChange={onChange} value={date} />
-                        {console.log(date)}
-                        {date.toString()} 
-                            <Accordion>                            
+                        <Calendar onChange={onChange} value={myDate} />
+                        {console.log(myDate)}
+                        {myDate.toString()} 
+                            <Accordion>  
+                            <Accordion.Item eventKey="6">
+                                <Accordion.Header>Eventes By</Accordion.Header>
+                                    <Accordion.Body>
+                                         <div className='venues'>{allVenuesDate}</div>
+                                         {console.log(allVenuesDate)}
+                                    </Accordion.Body>
+                                </Accordion.Item>                                      
                                 <Accordion.Item eventKey="0">
                                 <Accordion.Header>All Dance Events</Accordion.Header>
                                     <Accordion.Body>
@@ -149,21 +157,36 @@ const Home = () => {
                                     </Accordion.Item>
                             </Accordion>                 
                     </Col>
-                          
-                    {/* <Col className='column' xs={8} >
+                </Row>
+            </Container>
+                 <br />
+                    <br />
+                    <br />
+            <Container >
+                <Row >
+                    <Col >   
+                      <Image 
+                        fluid                                    
+                        alt="171x180"
+                        src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-01.jpg" />
+                        <h3 className="text-center"> Fun! </h3> 
+                    </Col>
+                    
+                    <Col >   
+                      <Image
+                        fluid                                       
+                        alt="171x180"
+                        src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-07.jpg" />
+                        <h3 className="text-center"> Enjoy the Music</h3> 
+                    </Col>
 
-                    <br />
-                    <br />
-                    <br />  
-                            <Accordion defaultActiveKey="0">
-                                <Accordion.Item eventKey="0">
-                                <Accordion.Header>All Dance Events</Accordion.Header>
-                                    <Accordion.Body>
-                                         <div className='venues'>{allVenues}</div>
-                                    </Accordion.Body>
-                                </Accordion.Item>
-                            </Accordion>         
-                    </Col> */}
+                    <Col >   
+                      <Image 
+                        fluid                                      
+                        alt="171x180"
+                        src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-03.jpg" />
+                        <h3 className="text-center"> Live a  Healthier Life </h3> 
+                    </Col>
                 </Row>
             </Container>
         </div>
@@ -172,3 +195,4 @@ const Home = () => {
 }
 
 export default Home
+

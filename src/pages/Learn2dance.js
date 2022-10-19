@@ -95,6 +95,36 @@ const Learn2Dance = () => {
                 </Col>
             </Row>
         </Container>
+                    <br />
+                    <br />
+                    <br />
+        <Container >
+                <Row >
+                    <Col >   
+                      <Image 
+                        fluid                                    
+                        alt="171x180"
+                        src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-10.jpg" />
+                        <h3 className="text-center"> Fun! </h3> 
+                    </Col>
+                    
+                    <Col >   
+                      <Image
+                        fluid                                       
+                        alt="171x180"
+                        src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-09.jpg" />
+                        <h3 className="text-center"> Enjoy the Music</h3> 
+                    </Col>
+
+                    <Col >   
+                      <Image 
+                        fluid                                      
+                        alt="171x180"
+                        src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-05.jpg" />
+                        <h3 className="text-center"> Live a  Healthier Life </h3> 
+                    </Col>
+                </Row>
+            </Container>
     </div>
     )
 }
