@@ -102,24 +102,27 @@ const Learn2Dance = () => {
                 <Row >
                     <Col >   
                       <Image 
-                        fluid                                    
-                        alt="171x180"
+                        fluid
+                        title="Photo by Ray Lopez (raylopezphoto.com)"                               
+                        alt="Photo by Ray Lopez (raylopezphoto.com)"
                         src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-10.jpg" />
                         <h3 className="text-center"> Fun! </h3> 
                     </Col>
                     
                     <Col >   
                       <Image
-                        fluid                                       
-                        alt="171x180"
+                        fluid
+                        title="Photo by Ray Lopez (raylopezphoto.com)"                                     
+                        alt="Photo by Ray Lopez (raylopezphoto.com)"
                         src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-09.jpg" />
                         <h3 className="text-center"> Enjoy the Music</h3> 
                     </Col>
 
                     <Col >   
                       <Image 
-                        fluid                                      
-                        alt="171x180"
+                        fluid
+                        title="Photo by Ray Lopez (raylopezphoto.com)"                                    
+                        alt="Photo by Ray Lopez (raylopezphoto.com)"
                         src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-05.jpg" />
                         <h3 className="text-center"> Live a  Healthier Life </h3> 
                     </Col>

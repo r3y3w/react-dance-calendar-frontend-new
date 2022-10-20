@@ -83,7 +83,7 @@ const Home = () => {
                         fluid                                    
                         alt="171x180"
                         src="https://rafael-reyes-bucket.s3.amazonaws.com/raf-final-image-1.jpg" />
-                        <h3 className="text-center"> Fun! </h3> 
+                        <h3 className="text-center"> Fun </h3> 
                     </Col>                    
                     <Col >   
                       <Image
@@ -166,25 +166,28 @@ const Home = () => {
                 <Row >
                     <Col >   
                       <Image 
-                        fluid                                    
-                        alt="171x180"
-                        src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-01.jpg" />
-                        <h3 className="text-center"> Fun! </h3> 
+                        fluid
+                        title="Photo by Ray Lopez (raylopezphoto.com)"                             
+                        alt="Photo by Ray Lopez (raylopezphoto.com)"
+                        src="https://rafael-reyes-bucket.s3.amazonaws.com/merged-photo-01.webp" />
+                        <h3 className="text-center"> Fun </h3> 
                     </Col>
                     
                     <Col >   
                       <Image
-                        fluid                                       
-                        alt="171x180"
-                        src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-07.jpg" />
+                        fluid
+                        title="Photo by Ray Lopez (raylopezphoto.com)"                                        
+                        alt="Photo by Ray Lopez (raylopezphoto.com)"
+                        src="https://rafael-reyes-bucket.s3.amazonaws.com/merged-photo-02.webp" />
                         <h3 className="text-center"> Enjoy the Music</h3> 
                     </Col>
 
                     <Col >   
                       <Image 
-                        fluid                                      
-                        alt="171x180"
-                        src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-03.jpg" />
+                        fluid
+                        title="Photo by Ray Lopez (raylopezphoto.com)"                                       
+                        alt="Photo by Ray Lopez (raylopezphoto.com)"
+                        src="https://rafael-reyes-bucket.s3.amazonaws.com/merged-photo-03.webp" />
                         <h3 className="text-center"> Live a  Healthier Life </h3> 
                     </Col>
                 </Row>
