@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
-import { useLocation, useNavigate} from 'react-router-dom'
+import { useLocation, useNavigate } from "react-router-dom";
 import { CardAdmin } from "../components/CardAdmin";
 
 const AdminPage = () => {
   const [form, setForm] = useState({});
   const [venuecollection, setVenueCollection] = useState([]);
   // const location = useLocation()
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // const { dancevenue, address, coverfee, date, weekly, workshop, dance, image, telephone, email, category, index } = location.state
-
 
   // Render Mongo DB collection  using GET Method in the Backend
   useEffect(() => {
@@ -29,18 +28,19 @@ const AdminPage = () => {
     dancevenue: "Dania Beach Casino Latin Thursdays",
     Address: "301 E Dania Beach Blvd, Dania Beach, FL 33004",
     coverfee: "no cover",
-    date: "2022-09-21T09:00:00.000Z",
+    date: "2022-11-05",
     weekly: true,
     workshop: "Salsa",
-    dance:"Bachata",
-    image: "https://rafael-reyes-bucket.s3.amazonaws.com/DaniaBeachCasinoLatinThursday-02.jpg",
+    dance: "Bachata",
+    image:
+      "https://rafael-reyes-bucket.s3.amazonaws.com/DaniaBeachCasinoLatinThursday-02.jpg",
     telephone: "954-920-1511",
-    email:  "https://www.casinodaniabeach.com/",
-    category:"event"
+    email: "https://www.casinodaniabeach.com/",
+    category: "event",
   };
 
-// Test New Blog Entry
-const testAddEvent = () => {
+  // Test New Blog Entry
+  const testAddEvent = () => {
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/add?`, {
       method: "POST",
       headers: {
@@ -55,49 +55,49 @@ const testAddEvent = () => {
     alert("Test Data Added");
   };
 
-
-
-
   // ADD EVENT FORM
   const addEvent = () => {
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/add?`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => console.error(err));
-      console.log("Event Added");
-      alert("Event Added");
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err));
+    console.log("Event Added");
+    alert("Event Added");
   };
 
+  // Update
+  const editVenue = (e) => {
+    e.preventDefault();
+    fetch(
+      `${process.env.REACT_APP_API_ENDPOINT}/update/?dancevenue=${allVenues.dancevenue}`,
+      {
+        // <-------- reference  root
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form), // <--------   Info to be added /
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => navigate("/"))
+      // .then(() => setForm(form)) // <------------  Info to be added
+      .catch((err) => console.log(err));
+    console.log("Dance Event Updated");
+  };
 
-// Update
-  const editVenue = e => {
-    e.preventDefault()
-  fetch(`${process.env.REACT_APP_API_ENDPOINT}/update/?dancevenue=${allVenues.dancevenue}`, {
-   
-  // <-------- reference  root
-  method: "PUT",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(form), // <--------   Info to be added /
-})
-  .then(res => res.json())
-  .then(data => navigate('/'))
-  // .then(() => setForm(form)) // <------------  Info to be added
-  .catch((err) => console.log(err));
-console.log("Dance Event Updated");
-};
+  console.log(form)
 
   return (
     <div>
-      
-      <h5><i>Where to Dance Site Administrator Form </i></h5>
-      <div className="form-container" >
-        
+      <h5>
+        <i>Where to Dance Site Administrator Form </i>
+      </h5>
+      <div className="form-container">
         <h6>Add Event: </h6>
         <form className="add-form">
           <label>
@@ -108,8 +108,7 @@ console.log("Dance Event Updated");
           <input
             type="text"
             placeholder="Hollywood Live"
-            
-            onChange={ e => {
+            onChange={(e) => {
               setForm({ ...form, dancevenue: e.target.value });
             }}
           />
@@ -123,9 +122,8 @@ console.log("Dance Event Updated");
           <input
             type="text"
             placeholder="ex. 123 Flaggler Ave."
-            
-            onChange={ e => {
-              setForm({...form, address: e.target.value });
+            onChange={(e) => {
+              setForm({ ...form, address: e.target.value });
             }}
           />
           <br />
@@ -137,9 +135,8 @@ console.log("Dance Event Updated");
           <input
             type="text"
             placeholder="ex. $15.00"
-           
-            onChange={ e => {
-              setForm({...form, coverfee: e.target.value });
+            onChange={(e) => {
+              setForm({ ...form, coverfee: e.target.value });
             }}
           />
           <br />
@@ -150,10 +147,9 @@ console.log("Dance Event Updated");
             </b>
           </label>
           <input
-            type="text"
+            type="date"
             placeholder="ex. Date"
-            
-            onChange={ e => {
+            onChange={(e) => {
               setForm({ ...form, date: e.target.value });
             }}
           />
@@ -166,8 +162,7 @@ console.log("Dance Event Updated");
           <input
             type="text"
             placeholder="ex. true"
-            
-            onChange={ e => {
+            onChange={(e) => {
               setForm({ ...form, weekly: e.target.value });
             }}
           />
@@ -180,8 +175,7 @@ console.log("Dance Event Updated");
           <input
             type="text"
             placeholder="Promo Photo URL Here..."
-            
-            onChange={ e => {
+            onChange={(e) => {
               setForm({ ...form, image: e.target.value });
             }}
           />
@@ -195,8 +189,7 @@ console.log("Dance Event Updated");
           <input
             type="text"
             placeholder="ex. Salsa"
-            
-            onChange={ e => {
+            onChange={(e) => {
               setForm({ ...form, workshop: e.target.value });
             }}
           />
@@ -210,8 +203,7 @@ console.log("Dance Event Updated");
           <input
             type="text"
             placeholder="ex. Bachata"
-            
-            onChange={ e => {
+            onChange={(e) => {
               setForm({ ...form, dance: e.target.value });
             }}
           />
@@ -224,13 +216,12 @@ console.log("Dance Event Updated");
           <input
             type="text"
             placeholder="ex. 555-555-5555"
-           
-            onChange={ e => {
+            onChange={(e) => {
               setForm({ ...form, telephone: e.target.value });
             }}
           />
           <br />
-        
+
           <label>
             <b>
               <i>Add : Email : = </i>
@@ -238,8 +229,8 @@ console.log("Dance Event Updated");
           </label>
           <input
             type="text"
-            placeholder="ex. me@myemail.com"            
-            onChange={ e => {
+            placeholder="ex. me@myemail.com"
+            onChange={(e) => {
               setForm({ ...form, email: e.target.value });
             }}
           />
@@ -252,32 +243,21 @@ console.log("Dance Event Updated");
           <input
             type="text"
             placeholder="ex. event, instructor or school"
-            onChange={ e => {
-              setForm({...form, category: e.target.value });
+            onChange={(e) => {
+              setForm({ ...form, category: e.target.value });
             }}
           />
           <br />
-          <button 
-            onClick={() => addEvent()}
-            >
-                Add Event
-          </button>
+          <button onClick={() => addEvent()}>Add Event</button>
           <br />
           <button onClick={() => editVenue()}>Update Event</button>
         </form>
 
-          <button 
-            onClick={() => testAddEvent()}
-            >
-                Test Event
-          </button>
+        <button onClick={() => testAddEvent()}>Test Event</button>
       </div>
-      
-      <div className="venues">{allVenues}</div>
 
-  
+      <div className="venues">{allVenues}</div>
     </div>
-    
   );
 };
 

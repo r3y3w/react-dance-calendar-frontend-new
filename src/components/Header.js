@@ -15,7 +15,7 @@ const Header = () => {
             <Nav className="me-auto" variant="tabs">
               
               <h6><Nav.Link href="/learn2dance">Learn To Dance</Nav.Link></h6>
-                        
+              {/* <h6><Nav.Link href="/admin-page">Admin Page</Nav.Link></h6>          */}
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -43,24 +43,19 @@ const Learn2Dance = () => {
             <br/>
         <Container fluid="md">
             <Row className='row-top'>
-                <Col className='column' >   
-                  
+                <Col className='column' > 
                             <Image
                                 fluid
                                 alt="171x180"
                                 src="https://www.harmonyacademy.net/wp-content/uploads/2021/03/Salsa-lady-styling.jpeg"/>                          
                             <h3 className="text-center">Fun</h3>
-                           
-               
                 </Col>
                 <Col className='column' >
                              <Image
                                 fluid
                                 alt="171x180"
                                 src="https://www.saugatuck.com/media/bxhjvuux/social-ballroom-dancing-for-fun.jpg"/>
-                            <h3 className="text-center">Enjoy the Music</h3>
-                
-                   
+                            <h3 className="text-center">Enjoy the Music</h3> 
                 </Col>
                 <Col className='column' >
                             <Image
