@@ -139,7 +139,7 @@ const Home = () => {
   return (
     <div>
       <br />
-      <Container>
+      <Container className="container">
         <Row>
           <Col>
             <Image
@@ -167,7 +167,7 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-      <Container>
+      <Container className="container">
         <Row>
           <Col className="column" xs={10}>
             <br />
@@ -228,7 +228,7 @@ const Home = () => {
       <br />
       <br />
       <br />
-      <Container>
+      <Container className="container">
         <Row>
           <Col>
             <Image

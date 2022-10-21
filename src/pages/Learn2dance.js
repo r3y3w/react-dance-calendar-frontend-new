@@ -41,39 +41,41 @@ const Learn2Dance = () => {
     return(
         <div>
             <br/>
-        <Container fluid="md">
+        <Container fluid="md" className="container">
             <Row className='row-top'>
                 <Col className='column' > 
                             <Image
-                                fluid
+                                fluid className="image"
                                 alt="171x180"
-                                src="https://www.harmonyacademy.net/wp-content/uploads/2021/03/Salsa-lady-styling.jpeg"/>                          
+                                src="https://rafael-reyes-bucket.s3.amazonaws.com/Learn2Dance-01a.webp"/>                          
                             <h3 className="text-center">Fun</h3>
                 </Col>
                 <Col className='column' >
-                             <Image
+                             <Image className="image"
                                 fluid
                                 alt="171x180"
-                                src="https://www.saugatuck.com/media/bxhjvuux/social-ballroom-dancing-for-fun.jpg"/>
+                                src="https://rafael-reyes-bucket.s3.amazonaws.com/Learn2Dance-02a.webp"/>
                             <h3 className="text-center">Enjoy the Music</h3> 
                 </Col>
                 <Col className='column' >
-                            <Image
+                            <Image className="image"
                                 fluid
                                 alt="171x180"
-                                src="http://mmsalsainthepark.weebly.com/uploads/4/5/6/5/45650065/4024172_orig.jpg"/>
+                                src="https://rafael-reyes-bucket.s3.amazonaws.com/Learn2Dance-03a.webp"/>
                             <h3 className="text-center">Live a  Healthier Life</h3>    
                 </Col>
             </Row>
             <Row>
-            <Col className='column' xs={10}>
+            <Col className='column' xs={10} >
+                    {/* <br />
                     <br />
-                    <br />
-                    <br />
-                <Calendar showWeekNumbers onChange={onChange} value={date} />                   
+                    <br /> */}                    
+                <div className="calendar">    
+                {/* <Calendar  className="react-calendar" onChange={onChange} value={date} />                    */}
                     {console.log(date)}
-                    {date.toString()} 
-                <Accordion>                            
+                    {/* {date.toString()}  */}
+                </div>
+                <Accordion className="accordion">                            
                                 <Accordion.Item eventKey="0">
                                 <Accordion.Header>Dance Studios</Accordion.Header>
                                     <Accordion.Body>
@@ -93,10 +95,10 @@ const Learn2Dance = () => {
                     <br />
                     <br />
                     <br />
-        <Container >
+        <Container className="container">
                 <Row >
                     <Col >   
-                      <Image 
+                      <Image className="image2"
                         fluid
                         title="Photo by Ray Lopez (raylopezphoto.com)"                               
                         alt="Photo by Ray Lopez (raylopezphoto.com)"
@@ -105,7 +107,7 @@ const Learn2Dance = () => {
                     </Col>
                     
                     <Col >   
-                      <Image
+                      <Image className="image2"
                         fluid
                         title="Photo by Ray Lopez (raylopezphoto.com)"                                     
                         alt="Photo by Ray Lopez (raylopezphoto.com)"
@@ -114,7 +116,7 @@ const Learn2Dance = () => {
                     </Col>
 
                     <Col >   
-                      <Image 
+                      <Image className="image2"
                         fluid
                         title="Photo by Ray Lopez (raylopezphoto.com)"                                    
                         alt="Photo by Ray Lopez (raylopezphoto.com)"
