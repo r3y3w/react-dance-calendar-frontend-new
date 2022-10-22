@@ -23,24 +23,24 @@ export const CardAdmin = ({ venue }) => {
      alert("Event Deleted");
   };
 
-  const editEvent = (e) => {
-    // alert(venue._id);
-    e.preventDefault();
-    const updateVenue = { CoverFee: '$25.00'  }
+  // const editEvent = (e) => {
+  //   // alert(venue._id);
+  //   e.preventDefault();
+  //   const updateVenue = { CoverFee: '$25.00'  }
 
-    fetch(`${process.env.REACT_APP_API_ENDPOINT}/update?_id=${venue._id}`, {
-      // <-------- reference  root
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updateVenue), // <--------   Info to be added /
-    })
-      .then((res) => res.json())
-      //   .then(data => navigate('/'))
-    //   .then(() => setForm(form)) // <------------  Info to be added
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
-    console.log("Dance Event Updated");
-  };
+  //   fetch(`${process.env.REACT_APP_API_ENDPOINT}/update?_id=${venue._id}`, {
+  //     // <-------- reference  root
+  //     method: "PUT",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(updateVenue), // <--------   Info to be added /
+  //   })
+  //     .then((res) => res.json())
+  //     //   .then(data => navigate('/'))
+  //   //   .then(() => setForm(form)) // <------------  Info to be added
+  //     .then((data) => console.log(data))
+  //     .catch((err) => console.log(err));
+  //   console.log("Dance Event Updated");
+  // };
 
   // I sawapped the <Link> tags for <div>
 
@@ -70,9 +70,9 @@ export const CardAdmin = ({ venue }) => {
                 <Button variant="link"  style={{ fontSize: 9 }} onClick={() => deleteEvent(venue.dancevenue)}>
               <a>Delete Event</a>
             </Button>
-            <Button variant="link"  style={{ fontSize: 9 }} onClick={() => editEvent(venue.dancevenue)} >
+            {/* <Button variant="link"  style={{ fontSize: 9 }} onClick={() => editEvent(venue.dancevenue)} >
               <a>Edit Event</a>
-            </Button>  
+            </Button>   */}
         </Card>
        </div> 
     </>
