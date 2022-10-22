@@ -93,6 +93,14 @@ h1 {
     margin-bottom: 50px;
 }
 
+.h5-adminpage {
+    display: flex ;    
+    justify-content: center;
+    font-style: italic;
+    font-size: 24px;
+    
+}
+
 .footer {
     font-size: 12px;
     text-align: center;
@@ -144,6 +152,7 @@ h1 {
     text-align:justify;
     margin-top: 50px;
 }
+
 
   /* .accordion {
     display: grid ;    

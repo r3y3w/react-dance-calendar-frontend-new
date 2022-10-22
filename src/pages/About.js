@@ -51,8 +51,8 @@ function About() {
             is meant to give you a quick reference about local dancing events,
             parties and festivals. These venues are promoted by known dance
             studios, instructors, and DJs local to South Florida.
-            Additionally; you will find some events from other cities,
-            States, and Countries. If you are a beginner to the dancing scene;
+            Additionally, you will find some events from other cities,
+            states, and countries. If you are a beginner to the dancing scene;
             you will find in the{" "}
             <b>
               <i>Learn to Dance </i>

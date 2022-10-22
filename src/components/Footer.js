@@ -4,7 +4,7 @@ const Footer = () => {
       <div>
     
       <p className="footer">
-        Copyright © Rafael Reyes  |
+        Copyright © Rafael Reyes |
 
         <a href="https://github.com/r3y3w/" target="_blank" >
             <img className="footer-img"
