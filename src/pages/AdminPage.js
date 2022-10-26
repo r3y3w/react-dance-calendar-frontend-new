@@ -96,7 +96,7 @@ const AdminPage = () => {
       <h5 className="h5-adminpage">
         <b>Site Administrator Form </b>
       </h5>
-      <Container >
+      <Container>
         <Row>
           <Col className="column" xs={1}>
             <div className="form-container">

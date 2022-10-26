@@ -3,7 +3,6 @@ import { CardVenue } from "../components/CardVenue";
 import { Container, Row, Col } from "react-bootstrap";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
-import Figure from "react-bootstrap/Figure";
 import Image from "react-bootstrap/Image";
 import Accordion from "react-bootstrap/Accordion";
 
@@ -11,17 +10,16 @@ const Home = () => {
   const [venuecollection, setVenueCollection] = useState([]);
   const [myDate, setMyDate] = useState(new Date());
 
-  const dateToCompare = "2022-10-22";
-  const onChange = (e) => {
+  const [filterDate, setFilterDate] = useState(null);
+
+  const HandleCalendarDate = (e) => {
     const year = e.getUTCFullYear();
     const day = e.getUTCDate();
     const month = e.getUTCMonth() + 1;
 
     const newDate = year + "-" + month + "-" + day;
-    setMyDate(newDate);
-
     console.log("newDate -> ", newDate);
-    // console.log("dateToCompare -> ", dateToCompare);
+    setFilterDate(newDate);
   };
 
   // Render Mongo DB collection
@@ -33,11 +31,9 @@ const Home = () => {
     console.log("Getting Data");
     // console.log(venuecollection)
   }, []);
-
-//   Filter event venues, and show them by default
-
+ 
   const allVenuesDate = venuecollection
-    .filter((venue) => venue.date === myDate)
+    .filter((venue) => venue.date === filterDate)
     .map((venue, index) => {
       return (
         <CardVenue
@@ -48,93 +44,40 @@ const Home = () => {
         />
       );
     });
-  const allVenues = venuecollection
-    .filter((venue) => {
-      if (venue.category === "event") return venue;
-    })
-    .map((venue, index) => {
-      return (
+  const filteredVenuesAll = (danceEvents) => {
+    const items = venuecollection
+      .filter(
+        (item) => item.category === danceEvents
+      )
+      .map((venue, index) => (
         <CardVenue
           key={venue._id}
           venue={venue}
           index={index}
           className="venue-item"
         />
-      );
-    });
+      ));
+    return items;
+  };
+  console.log("filterDate ->", filterDate);
 
-  const allVenuesSalsa = venuecollection
-    .filter((venue) => {
-      if (venue.dance === "Salsa" && venue.category === "event") return venue;
-    })
-    .map((venue, index) => {
-      return (
+  const filteredVenues = (danceGenre, danceEvents) => {
+    const items = venuecollection
+      .filter(
+        (item) => item.dance === danceGenre && item.category === danceEvents
+      )
+      .map((venue, index) => (
         <CardVenue
           key={venue._id}
           venue={venue}
           index={index}
           className="venue-item"
         />
-      );
-    });
-  const allVenuesBachata = venuecollection
-    .filter((venue) => {
-      if (venue.dance === "Bachata" && venue.category === "event") return venue;
-    })
-    .map((venue, index) => {
-      return (
-        <CardVenue
-          key={venue._id}
-          venue={venue}
-          index={index}
-          className="venue-item"
-        />
-      );
-    });
-  const allVenuesKizomba = venuecollection
-    .filter((venue) => {
-      if (venue.dance === "Kizomba" && venue.category === "event") return venue;
-    })
-    .map((venue, index) => {
-      return (
-        <CardVenue
-          key={venue._id}
-          venue={venue}
-          index={index}
-          className="venue-item"
-        />
-      );
-    });
-  const allVenuesBallroom = venuecollection
-    .filter((venue) => {
-      if (venue.dance === "Ballroom" && venue.category === "event")
-        return venue;
-    })
-    .map((venue, index) => {
-      return (
-        <CardVenue
-          key={venue._id}
-          venue={venue}
-          index={index}
-          className="venue-item"
-        />
-      );
-    });
-  const allVenuesFestivals = venuecollection
-    .filter((venue) => {
-      if (venue.dance === "Festival" && venue.category === "event")
-        return venue;
-    })
-    .map((venue, index) => {
-      return (
-        <CardVenue
-          key={venue._id}
-          venue={venue}
-          index={index}
-          className="venue-item"
-        />
-      );
-    });
+      ));
+    return items;
+  };
+
+  console.log("venuecollection ->", venuecollection);
 
   return (
     <div>
@@ -173,52 +116,56 @@ const Home = () => {
             <br />
             <br />
             <br />
-            {/* <Calendar onChange={onChange} value={myDate} /> */}
-            {/* {console.log(myDate)} */}
-            {/* {myDate.toString()} */}
+            <Calendar onChange={HandleCalendarDate} value={myDate} />
+            <br />
+            <br />
+            <br />
             <Accordion>
-              {/* <Accordion.Item eventKey="6">
-                <Accordion.Header>Eventes By</Accordion.Header>
+              <Accordion.Item eventKey="6">
+                <Accordion.Header>Eventes By Date</Accordion.Header>
                 <Accordion.Body>
                   <div className="venues">{allVenuesDate}</div>
-                  {console.log(allVenuesDate)}
                 </Accordion.Body>
-              </Accordion.Item> */}
+              </Accordion.Item>             
               <Accordion.Item eventKey="0">
                 <Accordion.Header>All Dance Events</Accordion.Header>
                 <Accordion.Body>
-                  <div className="venues">{allVenues}</div>
+                  <div className="venues">{filteredVenuesAll("event")}</div>                  
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="1">
                 <Accordion.Header>Salsa Events</Accordion.Header>
                 <Accordion.Body>
-                  <div className="venues">{allVenuesSalsa}</div>
+                  <div className="venues">
+                    {filteredVenues("Salsa", "event")}
+                  </div>
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="2">
                 <Accordion.Header>Bachata Events</Accordion.Header>
                 <Accordion.Body>
-                  <div className="venues">{allVenuesBachata}</div>
+                  <div className="venues">
+                    {filteredVenues("Bachata", "event")}
+                  </div>
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="3">
                 <Accordion.Header>Kizomba Events</Accordion.Header>
                 <Accordion.Body>
-                  <div className="venues">{allVenuesKizomba}</div>
+                {filteredVenues("Kizomba", "event")}
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="4">
                 <Accordion.Header>Ballroom Events</Accordion.Header>
                 <Accordion.Body>
-                  <div className="venues">{allVenuesBallroom}</div>
+                {filteredVenues("Ballroom", "event")}
                 </Accordion.Body>
               </Accordion.Item>
 
               <Accordion.Item eventKey="5">
                 <Accordion.Header>Festivals</Accordion.Header>
                 <Accordion.Body>
-                  <div className="venues">{allVenuesFestivals}</div>
+                {filteredVenues("Festival", "event")}
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
@@ -231,7 +178,7 @@ const Home = () => {
       <Container className="container">
         <Row>
           <Col>
-            <Image
+            <Image className="image2"
               fluid
               title="Photo by Ray Lopez (raylopezphoto.com)"
               alt="Photo by Ray Lopez (raylopezphoto.com)"
@@ -241,7 +188,7 @@ const Home = () => {
           </Col>
 
           <Col>
-            <Image
+            <Image className="image2"
               fluid
               title="Photo by Ray Lopez (raylopezphoto.com)"
               alt="Photo by Ray Lopez (raylopezphoto.com)"
@@ -251,7 +198,7 @@ const Home = () => {
           </Col>
 
           <Col>
-            <Image
+            <Image className="image2"
               fluid
               title="Photo by Ray Lopez (raylopezphoto.com)"
               alt="Photo by Ray Lopez (raylopezphoto.com)"
