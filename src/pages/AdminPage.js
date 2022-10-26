@@ -250,7 +250,7 @@ const AdminPage = () => {
           <br />
           <button onClick={() => addEvent()}>Add Event</button>
           <br />
-          <button onClick={() => editVenue()}>Update Event</button>
+          {/* <button onClick={() => editVenue()}>Update Event</button> */}
         </form>
 
         <button onClick={() => testAddEvent()}>Test Event</button>

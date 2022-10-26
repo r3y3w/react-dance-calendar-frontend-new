@@ -3,17 +3,24 @@ import { CardLearn } from '../components/CardLearn'
 import { Container,Row, Col } from 'react-bootstrap'
 import 'react-calendar/dist/Calendar.css';
 import Calendar from 'react-calendar'
-import Figure from 'react-bootstrap/Figure'
 import Image from 'react-bootstrap/Image'
 import Accordion from 'react-bootstrap/Accordion';
 
 const Learn2Dance = () => {
     const [venuecollection, setVenueCollection] = useState([])
-    const [date, setDate] = useState(new Date())
-    
-    const onChange = date => {	
-        setDate(date)
-    }
+    const [myDate, setMyDate] = useState(new Date());
+    const [filterDate, setFilterDate] = useState(null);
+
+
+   const HandleCalendarDate = (e) => {
+    const year = e.getUTCFullYear();
+    const day = e.getUTCDate();
+    const month = e.getUTCMonth() + 1;
+
+    const newDate = year + "-" + month + "-" + day;
+    console.log("newDate -> ", newDate);
+    setFilterDate(newDate);
+  };
    
     // Render Mongo DB collection
     useEffect(() => {
@@ -38,27 +45,43 @@ const Learn2Dance = () => {
            return(venue)}).map((venue, index) => {
                return (< CardLearn key={venue._id} venue={venue} index={index} className="venue-item"/>
                 )})
+                const filteredVenuesAll = (danceEvents) => {
+                    const items = venuecollection
+                      .filter(
+                        (item) => item.category === danceEvents
+                      )
+                      .map((venue, index) => (
+                        <CardLearn
+                          key={venue._id}
+                          venue={venue}
+                          index={index}
+                          className="venue-item"
+                        />
+                      ));
+                    return items;
+                  };
+                  console.log("venuecollection ->", venuecollection);
     return(
         <div>
             <br/>
         <Container fluid="md">
             <Row className='row-top'>
                 <Col className='column' > 
-                            <Image
+                            <Image className="image"
                                 fluid
                                 alt="171x180"
                                 src="https://www.harmonyacademy.net/wp-content/uploads/2021/03/Salsa-lady-styling.jpeg"/>                          
                             <h3 className="text-center">Fun</h3>
                 </Col>
                 <Col className='column' >
-                             <Image
+                             <Image className="image"
                                 fluid
                                 alt="171x180"
                                 src="https://www.saugatuck.com/media/bxhjvuux/social-ballroom-dancing-for-fun.jpg"/>
                             <h3 className="text-center">Enjoy the Music</h3> 
                 </Col>
                 <Col className='column' >
-                            <Image
+                            <Image className="image"
                                 fluid
                                 alt="171x180"
                                 src="http://mmsalsainthepark.weebly.com/uploads/4/5/6/5/45650065/4024172_orig.jpg"/>
@@ -66,24 +89,22 @@ const Learn2Dance = () => {
                 </Col>
             </Row>
             <Row>
-            <Col className='column' xs={10}>
+            <Col className='column' xs={11}>
                     <br />
                     <br />
                     <br />
-                <Calendar showWeekNumbers onChange={onChange} value={date} />                   
-                    {console.log(date)}
-                    {date.toString()} 
+                    {/* <Calendar onChange={HandleCalendarDate} value={myDate} /> */}
                 <Accordion>                            
                                 <Accordion.Item eventKey="0">
                                 <Accordion.Header>Dance Studios</Accordion.Header>
                                     <Accordion.Body>
-                                         <div className='venues'>{allVenuesStudios}</div>
+                                         <div className='venues'>{filteredVenuesAll("school")}</div>
                                     </Accordion.Body>
                                 </Accordion.Item>                                
                                 <Accordion.Item eventKey="1">
                                     <Accordion.Header>Dance Instructors</Accordion.Header>
                                     <Accordion.Body>
-                                        <div className='venues'>{allVenuesInstructors}</div>
+                                        <div className='venues'>{filteredVenuesAll("Instructor")}</div>
                                     </Accordion.Body>
                                 </Accordion.Item>
                 </Accordion>            
@@ -96,7 +117,7 @@ const Learn2Dance = () => {
         <Container >
                 <Row >
                     <Col >   
-                      <Image 
+                      <Image className="image2"
                         fluid
                         title="Photo by Ray Lopez (raylopezphoto.com)"                               
                         alt="Photo by Ray Lopez (raylopezphoto.com)"
@@ -105,8 +126,8 @@ const Learn2Dance = () => {
                     </Col>
                     
                     <Col >   
-                      <Image
-                        fluid
+                      <Image className="image2"
+                        fluid 
                         title="Photo by Ray Lopez (raylopezphoto.com)"                                     
                         alt="Photo by Ray Lopez (raylopezphoto.com)"
                         src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-09.jpg" />
@@ -114,7 +135,7 @@ const Learn2Dance = () => {
                     </Col>
 
                     <Col >   
-                      <Image 
+                      <Image className="image2"
                         fluid
                         title="Photo by Ray Lopez (raylopezphoto.com)"                                    
                         alt="Photo by Ray Lopez (raylopezphoto.com)"

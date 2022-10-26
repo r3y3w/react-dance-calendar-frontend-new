@@ -3,7 +3,6 @@ import { CardVenue } from "../components/CardVenue";
 import { Container, Row, Col } from "react-bootstrap";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
-import Figure from "react-bootstrap/Figure";
 import Image from "react-bootstrap/Image";
 import Accordion from "react-bootstrap/Accordion";
 
@@ -118,13 +117,16 @@ const Home = () => {
             <br />
             <br />
             <Calendar onChange={HandleCalendarDate} value={myDate} />
+            <br />
+            <br />
+            <br />
             <Accordion>
               <Accordion.Item eventKey="6">
                 <Accordion.Header>Eventes By Date</Accordion.Header>
                 <Accordion.Body>
                   <div className="venues">{allVenuesDate}</div>
                 </Accordion.Body>
-              </Accordion.Item>
+              </Accordion.Item>             
               <Accordion.Item eventKey="0">
                 <Accordion.Header>All Dance Events</Accordion.Header>
                 <Accordion.Body>
@@ -176,7 +178,7 @@ const Home = () => {
       <Container>
         <Row>
           <Col>
-            <Image
+            <Image className="image2"
               fluid
               title="Photo by Ray Lopez (raylopezphoto.com)"
               alt="Photo by Ray Lopez (raylopezphoto.com)"
@@ -186,7 +188,7 @@ const Home = () => {
           </Col>
 
           <Col>
-            <Image
+            <Image className="image2"
               fluid
               title="Photo by Ray Lopez (raylopezphoto.com)"
               alt="Photo by Ray Lopez (raylopezphoto.com)"
@@ -196,7 +198,7 @@ const Home = () => {
           </Col>
 
           <Col>
-            <Image
+            <Image className="image2"
               fluid
               title="Photo by Ray Lopez (raylopezphoto.com)"
               alt="Photo by Ray Lopez (raylopezphoto.com)"
