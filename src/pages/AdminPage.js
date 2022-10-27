@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 import { CardAdmin } from "../components/CardAdmin";
 import { Container, Row, Col } from "react-bootstrap";
 
 const AdminPage = () => {
   const [form, setForm] = useState({});
   const [venuecollection, setVenueCollection] = useState([]);
-  // const location = useLocation()ode
-  const navigate = useNavigate();
-  // const { dancevenue, address, coverfee, date, weekly, workshop, dance, image, telephone, email, category, index } = location.state
+  
+  
 
   // Render Mongo DB collection  using GET Method in the Backend
   useEffect(() => {
@@ -16,8 +14,6 @@ const AdminPage = () => {
       .then((res) => res.json())
       .then((data) => setVenueCollection(data))
       .catch((err) => console.error(err));
-    console.log("Getting Data");
-    console.log(venuecollection);
   }, []);
 
   const allVenues = venuecollection.map((venue, index) => {
@@ -29,12 +25,11 @@ const AdminPage = () => {
     dancevenue: "Dania Beach Casino Latin Thursdays",
     Address: "301 E Dania Beach Blvd, Dania Beach, FL 33004",
     coverfee: "no cover",
-    date: "2022-09-21T09:00:00.000Z",
+    date: "2022-11-04",
     weekly: true,
     workshop: "Salsa",
-    dance: "Bachata",
-    image:
-      "https://d33wubrfki0l68.cloudfront.net/6e52a8769c1b6d4a4cc09d4c58f07c67061e54bf/399c6/images/tango.png",
+    dance: "Salsa",
+    image: "https://rafael-reyes-bucket.s3.amazonaws.com/DaniaBeachCasinoLatinThursday-02.jpg",
     telephone: "954-920-1511",
     email: "https://www.casinodaniabeach.com/",
     category: "event",
@@ -52,7 +47,6 @@ const AdminPage = () => {
       .then((res) => res.json())
       .then((data) => console.log(data))
       .catch((err) => console.error(err));
-    console.log("Test Data Added");
     alert("Test Data Added");
   };
 
@@ -67,29 +61,9 @@ const AdminPage = () => {
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
-      .catch((err) => console.error(err));
-    console.log("Event Added");
+      .catch((err) => console.error(err))
     alert("Event Added");
   };
-
-  // Update
-  // const editVenue = (e) => {
-  //   e.preventDefault();
-  //   fetch(
-  //     `${process.env.REACT_APP_API_ENDPOINT}/update/?dancevenue=${allVenues.dancevenue}`,
-  //     {
-  //       // <-------- reference  root
-  //       method: "PUT",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(form), // <--------   Info to be added /
-  //     }
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => navigate("/"))
-  //     // .then(() => setForm(form)) // <------------  Info to be added
-  //     .catch((err) => console.log(err));
-  //   console.log("Dance Event Updated");
-  // };
 
   return (
     <div>
@@ -104,7 +78,7 @@ const AdminPage = () => {
               <form className="add-form">
                 <label>
                   <b>
-                    <i>Add : Dance Event : = </i>
+                    <i>Add : Event, School, or Instructor Name</i>
                   </b>
                 </label>
                 <input
@@ -118,7 +92,7 @@ const AdminPage = () => {
 
                 <label>
                   <b>
-                    <i>Add : Address : = </i>
+                    <i>Add : Address</i>
                   </b>
                 </label>
                 <input
@@ -131,7 +105,7 @@ const AdminPage = () => {
                 <br />
                 <label>
                   <b>
-                    <i>Add : Cover Fee : = </i>
+                    <i>Add : Cover Fee </i>
                   </b>
                 </label>
                 <input
@@ -145,7 +119,7 @@ const AdminPage = () => {
 
                 <label>
                   <b>
-                    <i>Add : Date : = </i>
+                    <i>Add : Date</i>
                   </b>
                 </label>
                 <input
@@ -158,7 +132,7 @@ const AdminPage = () => {
                 <br />
                 <label>
                   <b>
-                    <i>Add : Weekly Event : = </i>
+                    <i>Add : Weekly Event</i>
                   </b>
                 </label>
                 <input
@@ -171,7 +145,7 @@ const AdminPage = () => {
                 <br />
                 <label>
                   <b>
-                    <i>Add : Promo Photo : = </i>
+                    <i>Add : Promo Photo URL</i>
                   </b>
                 </label>
                 <input
@@ -185,7 +159,7 @@ const AdminPage = () => {
 
                 <label>
                   <b>
-                    <i>Add : Workshop: = </i>
+                    <i>Add : Workshop</i>
                   </b>
                 </label>
                 <input
@@ -199,7 +173,7 @@ const AdminPage = () => {
 
                 <label>
                   <b>
-                    <i>Add : Dance : = </i>
+                    <i>Add : Dance</i>
                   </b>
                 </label>
                 <input
@@ -212,7 +186,7 @@ const AdminPage = () => {
                 <br />
                 <label>
                   <b>
-                    <i>Add : Telephone : = </i>
+                    <i>Add : Telephone</i>
                   </b>
                 </label>
                 <input
@@ -226,7 +200,7 @@ const AdminPage = () => {
 
                 <label>
                   <b>
-                    <i>Add : Email : = </i>
+                    <i>Add : Email</i>
                   </b>
                 </label>
                 <input
@@ -239,7 +213,7 @@ const AdminPage = () => {
                 <br />
                 <label>
                   <b>
-                    <i>Add : Category: = </i>
+                    <i>Add : Category</i>
                   </b>
                 </label>
                 <input
@@ -252,9 +226,8 @@ const AdminPage = () => {
                 <br />
                 <button onClick={() => addEvent()}>Add Event</button>
                 <br />
-                {/* <button onClick={() => editVenue()}>Update Event</button> */}
               </form>
-
+              <br />   
               <button onClick={() => testAddEvent()}>Test Event</button>
             </div>
           </Col>

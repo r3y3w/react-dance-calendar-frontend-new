@@ -8,7 +8,7 @@ import Accordion from "react-bootstrap/Accordion";
 
 const Home = () => {
   const [venuecollection, setVenueCollection] = useState([]);
-  const [myDate, setMyDate] = useState(new Date());
+  const [myDate] = useState(new Date());
 
   const [filterDate, setFilterDate] = useState(null);
 
@@ -18,7 +18,6 @@ const Home = () => {
     const month = e.getUTCMonth() + 1;
 
     const newDate = year + "-" + month + "-" + day;
-    console.log("newDate -> ", newDate);
     setFilterDate(newDate);
   };
 
@@ -28,8 +27,6 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => setVenueCollection(data))
       .catch((err) => console.error(err));
-    console.log("Getting Data");
-    // console.log(venuecollection)
   }, []);
  
   const allVenuesDate = venuecollection
@@ -59,7 +56,6 @@ const Home = () => {
       ));
     return items;
   };
-  console.log("filterDate ->", filterDate);
 
   const filteredVenues = (danceGenre, danceEvents) => {
     const items = venuecollection
@@ -76,8 +72,6 @@ const Home = () => {
       ));
     return items;
   };
-
-  console.log("venuecollection ->", venuecollection);
 
   return (
     <div>

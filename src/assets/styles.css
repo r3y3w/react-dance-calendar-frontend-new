@@ -6,8 +6,6 @@
     box-sizing: inherit;
 }
 
-
-
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 8px;
@@ -24,12 +22,6 @@ ul {
     font-style: italic;
 }
 
-/* .venues-container {
-    max-width: 120px;
-    display: flex;
-    flex-direction: wrap;
-    margin: 4rem auto;
-} */
 .venues {
     width: 100%;
     overflow: hidden;
@@ -44,7 +36,7 @@ ul {
     border-radius: 5px;
     width: 200px;
     height: fit-content;
-    border: solid 3px rgb(173, 114, 183);
+ 
     overflow: hidden;
     transition: 0.3s;
     animation: ease-in;
@@ -57,7 +49,6 @@ ul {
     border-radius: 5px;
     width: 200px;
     height: fit-content;
-    /* border: solid 3px rgb(32, 181, 39); */
     overflow: hidden;
     transition: 0.3s;
     animation: ease-in;
@@ -85,8 +76,7 @@ ul {
     display: flex;
     justify-content: center;
     padding: 0.rem;
-    background-color: aliceblue;
-    
+    background-color: aliceblue;    
 }
 
 h1 {
@@ -121,7 +111,6 @@ h1 {
 
 .react-calendar {
     width: 600px;
-    /* max-width: 100%; */
     background: rgb(218, 222, 9);
     border: 1px solid #a0a096;
     font-family: Arial, Helvetica, sans-serif;
@@ -152,9 +141,3 @@ h1 {
     text-align:justify;
     margin-top: 50px;
 }
-
-
-  /* .accordion {
-    display: grid ;    
-    justify-content: 100%;
-  } */

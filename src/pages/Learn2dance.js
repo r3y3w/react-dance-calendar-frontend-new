@@ -2,24 +2,11 @@ import { useState, useEffect } from "react";
 import { CardLearn } from "../components/CardLearn";
 import { Container, Row, Col } from "react-bootstrap";
 import "react-calendar/dist/Calendar.css";
-import Calendar from "react-calendar";
 import Image from "react-bootstrap/Image";
 import Accordion from "react-bootstrap/Accordion";
 
 const Learn2Dance = () => {
   const [venuecollection, setVenueCollection] = useState([]);
-  const [myDate, setMyDate] = useState(new Date());
-  const [filterDate, setFilterDate] = useState(null);
-
-  const HandleCalendarDate = (e) => {
-    const year = e.getUTCFullYear();
-    const day = e.getUTCDate();
-    const month = e.getUTCMonth() + 1;
-
-    const newDate = year + "-" + month + "-" + day;
-    console.log("newDate -> ", newDate);
-    setFilterDate(newDate);
-  };
 
   // Render Mongo DB collection
   useEffect(() => {
@@ -27,39 +14,9 @@ const Learn2Dance = () => {
       .then((res) => res.json())
       .then((data) => setVenueCollection(data))
       .catch((err) => console.error(err));
-    console.log("Getting Data");
-    // console.log(venuecollection)
   }, []);
 
   //Filter event venues, and hide them by default
-  const allVenuesStudios = venuecollection
-    .filter((venue) => {
-      if (venue.category === "school") return venue;
-    })
-    .map((venue, index) => {
-      return (
-        <CardLearn
-          key={venue._id}
-          venue={venue}
-          index={index}
-          className="venue-item"
-        />
-      );
-    });
-  const allVenuesInstructors = venuecollection
-    .filter((venue) => {
-      if (venue.category === "Instructor") return venue;
-    })
-    .map((venue, index) => {
-      return (
-        <CardLearn
-          key={venue._id}
-          venue={venue}
-          index={index}
-          className="venue-item"
-        />
-      );
-    });
   const filteredVenuesAll = (danceEvents) => {
     const items = venuecollection
       .filter((item) => item.category === danceEvents)
@@ -73,7 +30,7 @@ const Learn2Dance = () => {
       ));
     return items;
   };
-  console.log("venuecollection ->", venuecollection);
+  
   return (
     <div>
       <br />
@@ -112,7 +69,6 @@ const Learn2Dance = () => {
             <br />
             <br />
             <br />
-            {/* <Calendar onChange={HandleCalendarDate} value={myDate} /> */}
             <Accordion>
               <Accordion.Item eventKey="0">
                 <Accordion.Header>Dance Studios</Accordion.Header>
