@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import "react-calendar/dist/Calendar.css";
 import Image from "react-bootstrap/Image";
 import Accordion from "react-bootstrap/Accordion";
+import "bootstrap/dist/css/bootstrap.min.css"
 
 const Learn2Dance = () => {
   const [venuecollection, setVenueCollection] = useState([]);
@@ -99,9 +100,9 @@ const Learn2Dance = () => {
               fluid
               title="Photo by Ray Lopez (raylopezphoto.com)"
               alt="Photo by Ray Lopez (raylopezphoto.com)"
-              src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-10.jpg"
+              src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-l2d-left.jpg"
             />
-            <h3 className="text-center"> Fun! </h3>
+            <h3 className="text-center">Fun!</h3>
           </Col>
 
           <Col>
@@ -110,9 +111,9 @@ const Learn2Dance = () => {
               fluid
               title="Photo by Ray Lopez (raylopezphoto.com)"
               alt="Photo by Ray Lopez (raylopezphoto.com)"
-              src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-09.jpg"
+              src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-l2d+center.jpg"
             />
-            <h3 className="text-center"> Enjoy the Music</h3>
+            <h3 className="text-center">Enjoy the Music</h3>
           </Col>
 
           <Col>
@@ -121,9 +122,9 @@ const Learn2Dance = () => {
               fluid
               title="Photo by Ray Lopez (raylopezphoto.com)"
               alt="Photo by Ray Lopez (raylopezphoto.com)"
-              src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-05.jpg"
+              src="https://rafael-reyes-bucket.s3.amazonaws.com/RayLopez-l2d-right.jpg"
             />
-            <h3 className="text-center"> Live a Healthier Life </h3>
+            <h2 className="text-center">Live a Healthier Life!</h2>
           </Col>
         </Row>
       </Container>

@@ -125,8 +125,7 @@ h1 {
 
   .image2 {
     overflow: hidden;
-    width: 400px;
-    height: 450px;
+    /* height: 450px; */
   }
 
   .footer-img {   

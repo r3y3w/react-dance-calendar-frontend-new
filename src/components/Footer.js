@@ -1,35 +1,32 @@
 const Footer = () => {
-    return (
-      <footer>
-        <div>
-      
+  return (
+    <footer>
+      <div>
         <p className="footer">
-          Copyright © Rafael Reyes  |
-  
+          Copyright © Rafael Reyes |
           <a href="https://github.com/r3y3w/" target="_blank" rel="noreferrer">
-              <img className="footer-img"
-                src="https://rafael-reyes-bucket.s3.amazonaws.com/githubicon-03.png"
-                alt=""
-                
-              />
-            </a>
-            <a href="www.linkedin.com/in/rafael-reyes-castro"
-              target="_blank" rel="noreferrer"
-             
-            >    
-              <img className="footer-img"
-                src="https://rafael-reyes-bucket.s3.amazonaws.com/linkedinlogo-02.jpeg"
-                alt=""
-                
-              />
-            </a>
-            | 2022 | all rights reserved
+            <img
+              className="footer-img"
+              src="https://rafael-reyes-bucket.s3.amazonaws.com/githubicon-03.png"
+              alt=""
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/rafael-reyes-castro/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              className="footer-img"
+              src="https://rafael-reyes-bucket.s3.amazonaws.com/linkedinlogo-02.jpeg"
+              alt=""
+            />
+          </a>
+          | 2022 | all rights reserved
         </p>
-        
-        </div>
-      </footer>
-    );
-  };
-  
-  export default Footer;
-  
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
